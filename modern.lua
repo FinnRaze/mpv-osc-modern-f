@@ -39,7 +39,7 @@ local user_opts = {
     visibility = 'auto',        -- only used at init to set visibility_mode(...)
     windowcontrols = 'auto',    -- whether to show window controls
     volumecontrol = true,       -- whether to show mute button and volumne slider
-    processvolume = true,		-- volue slider show processd volume
+    processvolume = false,		-- volue slider show processd volume
     language = 'chs',            -- eng=English, chs=Chinese
     boxalpha = 180
 }
@@ -1066,7 +1066,7 @@ layouts = function ()
     --
     -- Alignment
     --
-    local refX = osc_w / 2
+    local refX = 0
     local refY = posY
     local geo
     
@@ -1075,14 +1075,14 @@ layouts = function ()
     --
     new_element('seekbarbg', 'box')
     lo = add_layout('seekbarbg')
-    lo.geometry = {x = refX , y = refY - 96 , an = 5, w = osc_geo.w - 50, h = 2}
+    lo.geometry = {x = osc_geo.w / 2 , y = refY - 96 , an = 5, w = osc_geo.w - 50, h = 2}
     lo.layer = 13
     lo.style = osc_styles.SeekbarBg
     lo.alpha[1] = 128
     lo.alpha[3] = 128
 
     lo = add_layout('seekbar')
-    lo.geometry = {x = refX, y = refY - 96 , an = 5, w = osc_geo.w - 50, h = 16}
+    lo.geometry = {x = osc_geo.w / 2 , y = refY - 96 , an = 5, w = osc_geo.w - 50, h = 16}
     lo.style = osc_styles.SeekbarFg
     lo.slider.gap = 7
     lo.slider.tooltip_style = osc_styles.Tooltip
@@ -1093,13 +1093,13 @@ layouts = function ()
     lo = new_element('volumebarbg', 'box')
     lo.visible = (osc_param.playresx >= 750) and user_opts.volumecontrol
     lo = add_layout('volumebarbg')
-    lo.geometry = {x = 155, y = refY - 40, an = 4, w = 80, h = 2}
+    lo.geometry = {x = osc_geo.w - 317, y = refY - 40, an = 4, w = 80, h = 2}
     lo.layer = 13
     lo.style = osc_styles.VolumebarBg
 
     
     lo = add_layout('volumebar')
-    lo.geometry = {x = 155, y = refY - 40, an = 4, w = 80, h = 8}
+    lo.geometry = {x = osc_geo.w - 317, y = refY - 40, an = 4, w = 80, h = 8}
     lo.style = osc_styles.VolumebarFg
     lo.slider.gap = 3
     lo.slider.tooltip_style = osc_styles.Tooltip
@@ -1107,24 +1107,24 @@ layouts = function ()
         
     -- buttons
     lo = add_layout('pl_prev')
-    lo.geometry = {x = refX - 120, y = refY - 40 , an = 5, w = 30, h = 24}
+    lo.geometry = {x = refX + 87, y = refY - 40 , an = 5, w = 30, h = 24}
     lo.style = osc_styles.Ctrl2
 
     lo = add_layout('skipback')
-    lo.geometry = {x = refX - 60, y = refY - 40 , an = 5, w = 30, h = 24}
+    lo.geometry = {x = refX + 187, y = refY - 40 , an = 5, w = 30, h = 24}
     lo.style = osc_styles.Ctrl2
 
             
     lo = add_layout('playpause')
-    lo.geometry = {x = refX, y = refY - 40 , an = 5, w = 45, h = 45}
+    lo.geometry = {x = refX + 37, y = refY - 40 , an = 5, w = 45, h = 45}
     lo.style = osc_styles.Ctrl1    
 
     lo = add_layout('skipfrwd')
-    lo.geometry = {x = refX + 60, y = refY - 40 , an = 5, w = 30, h = 24}
+    lo.geometry = {x = refX + 237, y = refY - 40 , an = 5, w = 30, h = 24}
     lo.style = osc_styles.Ctrl2    
 
     lo = add_layout('pl_next')
-    lo.geometry = {x = refX + 120, y = refY - 40 , an = 5, w = 30, h = 24}
+    lo.geometry = {x = refX + 137, y = refY - 40 , an = 5, w = 30, h = 24}
     lo.style = osc_styles.Ctrl2
 
 
@@ -1139,17 +1139,17 @@ layouts = function ()
     lo.style = osc_styles.Time    
 
     lo = add_layout('cy_audio')
-    lo.geometry = {x = 37, y = refY - 40, an = 5, w = 24, h = 24}
+    lo.geometry = {x = osc_geo.w - 187, y = refY - 40, an = 5, w = 24, h = 24}
     lo.style = osc_styles.Ctrl3
     lo.visible = (osc_param.playresx >= 540)
     
     lo = add_layout('cy_sub')
-    lo.geometry = {x = 87, y = refY - 40, an = 5, w = 24, h = 24}
+    lo.geometry = {x = osc_geo.w - 137, y = refY - 40, an = 5, w = 24, h = 24}
     lo.style = osc_styles.Ctrl3
     lo.visible = (osc_param.playresx >= 600)
 
     lo = add_layout('vol_ctrl')
-    lo.geometry = {x = 137, y = refY - 40, an = 5, w = 24, h = 24}
+    lo.geometry = {x = osc_geo.w - 337, y = refY - 40, an = 5, w = 24, h = 24}
     lo.style = osc_styles.Ctrl3
     lo.visible = (osc_param.playresx >= 650)
 
@@ -1331,8 +1331,6 @@ function osc_init()
     ne.eventresponder['mbtn_left_up'] =
         function () set_track('audio', 1) end
     ne.eventresponder['mbtn_right_up'] =
-        function () set_track('audio', -1) end
-    ne.eventresponder['mbtn_mid_up'] =
         function () show_message(get_tracklist('audio')) end
                 
     --cy_sub
@@ -1361,8 +1359,6 @@ function osc_init()
     ne.eventresponder['mbtn_left_up'] =
         function () set_track('sub', 1) end
     ne.eventresponder['mbtn_right_up'] =
-        function () set_track('sub', -1) end
-    ne.eventresponder['mbtn_mid_up'] =
         function () show_message(get_tracklist('sub')) end
         
     -- vol_ctrl
