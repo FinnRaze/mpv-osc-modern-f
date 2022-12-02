@@ -1,4 +1,4 @@
-mpv osc script forked from modern
+mpv osc script forked from [modern](https://github.com/maoiscat/mpv-osc-modern)
 
 ![mpv-shot0007](https://user-images.githubusercontent.com/84557113/205270820-86e17e7f-a679-4b05-b874-d1bf50754d75.jpg)
 
