@@ -41,6 +41,7 @@ local user_opts = {
     volumecontrol = true,       -- whether to show mute button and volumne slider
     processvolume = true,		-- volue slider show processd volume
     language = 'chs',            -- eng=English, chs=Chinese
+    boxalpha = 180
 }
 
 -- Localization
@@ -1060,7 +1061,7 @@ layouts = function ()
     lo.geometry = {x = posX, y = posY, an = 7, w = osc_w, h = 1}
     lo.style = osc_styles.TransBg
     lo.layer = 10
-    lo.alpha[3] = 0
+    lo.alpha[3] = user_opts.boxalpha
     
     --
     -- Alignment
