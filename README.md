@@ -1,26 +1,7 @@
-# mpv-osc-modern
+mpv osc script forked from modern
 
-NOTICE: Anyone want a thumbnail may try the other ''with.thumbfast'' branch.
+![mpv-shot0007](https://user-images.githubusercontent.com/84557113/205270820-86e17e7f-a679-4b05-b874-d1bf50754d75.jpg)
 
-VER 1.1.1
-
-changelog:
-1. fix logo distortion issue due to recent libass update.
-
-VER 1.1.0
-
-changelog:
-1. Gui activation area is limited to gui area.
-2. Time slider show chapter name in tooltip.
-3. Volume slider show volume number in tooltip.
-4. Volume slider use processed volume number to make loudness transition fluent.
-5. Mouse wheel up/down over volume slider to change volume.
-
-------
-
-Yet another mpv osc script, based on mpv built-in osc
-
-![img](https://github.com/maoiscat/mpv-osc-modern/blob/main/preview.png)
 
 # Installation
 
@@ -67,6 +48,7 @@ Config file locates at "\~\~/script-opts/osc.conf". Supported options are listed
     volumecontrol=yes/no            -- whether to show mute button and volumne slider
     processvolume=yes/no            -- volume bar show processd volume
     language=eng/chs                -- eng=English chs=Chinese
+    boxalpha=80                     -- alpha of the background box,0 (opaque) to 255 (fully transparent)
 ```
 
 # Button Actions
@@ -86,5 +68,5 @@ Some buttons may accept multiple mouse actions, here is a list:
 * mbtn_left: play previous/netx file.
 * mbtn_right: show playlist.
 ## cycle_audio/subtitle
-* mbtn_left/right: cycle to next/previous track.
-* mbtn_mid: show track list.
+* mbtn_left: cycle to next track.
+* mbtn_right: show track list.
