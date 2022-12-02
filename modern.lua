@@ -19,11 +19,11 @@ local user_opts = {
     scalefullscreen = 1,        -- scaling of the controller when fullscreen
     scaleforcedwindow = 2,      -- scaling when rendered on a forced window
     vidscale = false,           -- scale the controller with the video?
-    hidetimeout = 1000,         -- duration in ms until the OSC hides if no
+    hidetimeout = 500,         -- duration in ms until the OSC hides if no
                                 -- mouse movement. enforced non-negative for the
                                 -- user, but internally negative is 'always-on'.
-    fadeduration = 500,         -- duration of fade out in ms, 0 = no fade
-    minmousemove = 3,           -- minimum amount of pixels the mouse has to
+    fadeduration = 200,         -- duration of fade out in ms, 0 = no fade
+    minmousemove = 0,           -- minimum amount of pixels the mouse has to
                                 -- move between ticks to make the OSC show up
     iamaprogrammer = false,     -- use native mpv values and disable OSC
                                 -- internal track list management (and some
@@ -35,18 +35,18 @@ local user_opts = {
     title = '${media-title}',   -- string compatible with property-expansion
                                 -- to be shown as OSC title
     showtitle = true,            -- show title and no hide timeout on pause
-    timetotal = true,              -- display total time instead of remaining time?
+    timetotal = false,              -- display total time instead of remaining time?
     visibility = 'auto',        -- only used at init to set visibility_mode(...)
     windowcontrols = 'auto',    -- whether to show window controls
     volumecontrol = true,       -- whether to show mute button and volumne slider
     processvolume = true,		-- volue slider show processd volume
-    language = 'eng',            -- eng=English, chs=Chinese
+    language = 'chs',            -- eng=English, chs=Chinese
 }
 
 -- Localization
 local language = {
     ['eng'] = {
-        welcome = '{\\fs24\\1c&H0&\\3c&HFFFFFF&}Drop files or URLs to play here.',  -- this text appears when mpv starts
+        welcome = 'Drop files or URLs to play here.',  -- this text appears when mpv starts
         off = 'OFF',
         na = 'n/a',
         none = 'none',
@@ -61,7 +61,7 @@ local language = {
         nochapter = 'No chapters.',
     },
     ['chs'] = {
-        welcome = '{\\1c&H00\\bord0\\fs30\\fn微软雅黑 light\\fscx125}MPV{\\fscx100} 播放器',  -- this text appears when mpv starts
+        welcome = '{\\fs24}拖拽文件或url到此窗口播放',  -- this text appears when mpv starts
         off = '关闭',
         na = 'n/a',
         none = '无',
@@ -138,6 +138,13 @@ local state = {
     lastvisibility = user_opts.visibility,		-- save last visibility on pause if showtitle
     sys_volume,									--system volume
     proc_volume,								--processed volume
+}
+
+local thumbfast = {
+    width = 0,
+    height = 0,
+    disabled = true,
+    available = false
 }
 
 local window_control_box_width = 138
@@ -655,6 +662,42 @@ function render_elements(master_ass)
                     elem_ass:append(slider_lo.tooltip_style)
                     ass_append_alpha(elem_ass, slider_lo.alpha, 0)
                     elem_ass:append(tooltiplabel)
+
+                    -- thumbnail
+                    if element.thumbnail and not thumbfast.disabled then
+                        local osd_w = mp.get_property_number("osd-width")
+                        if osd_w then
+                            local r_w, r_h = get_virt_scale_factor()
+
+                            local thumbPad = 4
+                            local thumbMarginX = 18 / r_w
+                            local thumbMarginY = 30
+                            local tooltipBgColor = "FFFFFF"
+                            local tooltipBgAlpha = 80
+                            local thumbX = math.min(osd_w - thumbfast.width - thumbMarginX, math.max(thumbMarginX, tx / r_w - thumbfast.width / 2))
+                            local thumbY = ((ty - thumbMarginY) / r_h - thumbfast.height)
+
+                            thumbX = math.floor(thumbX + 0.5)
+                            thumbY = math.floor(thumbY + 0.5)
+
+                            elem_ass:new_event()
+                            elem_ass:pos(thumbX * r_w, ty - thumbMarginY - thumbfast.height * r_h)
+                            elem_ass:append(osc_styles.Tooltip)
+                            elem_ass:draw_start()
+                            elem_ass:rect_cw(-thumbPad * r_w, -thumbPad * r_h, (thumbfast.width + thumbPad) * r_w, (thumbfast.height + thumbPad) * r_h)
+                            elem_ass:draw_stop()
+
+                            mp.commandv("script-message-to", "thumbfast", "thumb",
+                                mp.get_property_number("duration", 0) * (sliderpos / 100),
+                                thumbX,
+                                thumbY
+                            )
+                        end
+                    end
+                else
+                    if element.thumbnail and thumbfast.available then
+                        mp.commandv("script-message-to", "thumbfast", "clear")
+                    end
                 end
             end
 
@@ -1236,13 +1279,13 @@ function osc_init()
     ne.softrepeat = true
     ne.content = '\xEF\x8E\xA0'
     ne.eventresponder['mbtn_left_down'] =
-        --function () mp.command('seek -5') end
-        function () mp.commandv('seek', -5, 'relative', 'keyframes') end
+        --function () mp.command('add chapter -1') end
+        function () mp.commandv('add','chapter', -1) end
     ne.eventresponder['shift+mbtn_left_down'] =
         function () mp.commandv('frame-back-step') end
     ne.eventresponder['mbtn_right_down'] =
-        --function () mp.command('seek -60') end
-        function () mp.commandv('seek', -60, 'relative', 'keyframes') end
+        --function () mp.command('seek -90') end
+        function () mp.commandv('seek', -90, 'relative', 'keyframes') end
 
     --skipfrwd
     ne = new_element('skipfrwd', 'button')
@@ -1250,13 +1293,13 @@ function osc_init()
     ne.softrepeat = true
     ne.content = '\xEF\x8E\x9F'
     ne.eventresponder['mbtn_left_down'] =
-        --function () mp.command('seek +5') end
-        function () mp.commandv('seek', 5, 'relative', 'keyframes') end
+        --function () mp.command('add chapter +1') end
+        function () mp.commandv('add','chapter', 1) end
     ne.eventresponder['shift+mbtn_left_down'] =
         function () mp.commandv('frame-step') end
     ne.eventresponder['mbtn_right_down'] =
-        --function () mp.command('seek +60') end
-        function () mp.commandv('seek', 60, 'relative', 'keyframes') end
+        --function () mp.command('seek +87') end
+        function () mp.commandv('seek', 87, 'relative', 'keyframes') end
 
     --
     update_tracklist()
@@ -1372,6 +1415,7 @@ function osc_init()
     ne = new_element('seekbar', 'slider')
 
     ne.enabled = not (mp.get_property('percent-pos') == nil)
+    ne.thumbnail = true
     ne.slider.markerF = function ()
         local duration = mp.get_property_number('duration', nil)
         if not (duration == nil) then
@@ -2109,6 +2153,8 @@ mp.set_key_bindings({
                             function(e) process_event('mbtn_mid', 'down')  end},
     {'wheel_up',            function(e) process_event('wheel_up', 'press') end},
     {'wheel_down',          function(e) process_event('wheel_down', 'press') end},
+    {"shift+mbtn_left",     function(e) process_event("shift+mbtn_left", "up") end,
+                            function(e) process_event("shift+mbtn_left", "down")  end},
     {'mbtn_left_dbl',       'ignore'},
     {'mbtn_right_dbl',      'ignore'},
 }, 'input', 'force')
@@ -2171,6 +2217,15 @@ end
 visibility_mode(user_opts.visibility, true)
 mp.register_script_message('osc-visibility', visibility_mode)
 mp.add_key_binding(nil, 'visibility', function() visibility_mode('cycle') end)
+
+mp.register_script_message("thumbfast-info", function(json)
+    local data = utils.parse_json(json)
+    if type(data) ~= "table" or not data.width or not data.height then
+        msg.error("thumbfast-info: received json didn't produce a table with thumbnail information")
+    else
+        thumbfast = data
+    end
+end)
 
 set_virt_mouse_area(0, 0, 0, 0, 'input')
 set_virt_mouse_area(0, 0, 0, 0, 'window-controls')
