@@ -32,8 +32,8 @@ Config file locates at "\~\~/script-opts/osc.conf". Supported options are listed
     scalefullscreen=1               -- scaling of the controller when fullscreen
     scaleforcedwindow=2             -- scaling when rendered on a forced window
     vidscale=yes/no                 -- scale the controller with the video?
-    hidetimeout=1000                -- duration in ms until the OSC hides if no mouse movement. enforced non-negative for the user but internally negative is 'always-on'.
-    fadeduration=500                -- duration of fade out in ms 0=no fade
+    hidetimeout=500                -- duration in ms until the OSC hides if no mouse movement. enforced non-negative for the user but internally negative is 'always-on'.
+    fadeduration=200                -- duration of fade out in ms 0=no fade
     minmousemove=3                  -- minimum amount of pixels the mouse has to move between ticks to make the OSC show up
     iamaprogrammer=yes/no           -- use native mpv values and disable OSC internal track list management (and some functions that depend on it)
     font='mpv-osd-symbols'          -- default osc font
