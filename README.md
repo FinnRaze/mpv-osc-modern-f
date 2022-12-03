@@ -61,8 +61,8 @@ Some buttons may accept multiple mouse actions, here is a list:
 * mbtn_left: seek to chosen position.
 * mbtn_right: seek to the head of chosen chapter
 ## skip_back/forward
-* mbtn_left: add chapter -1/1.
-* mbtn_right: skip 90 seconds.
+* mbtn_left: skip 90 seconds.
+* mbtn_right: add chapter -1/1.
 * shift+mbtn_left: frame-step/frame-back-step
 ## playlist_back/forwad
 * mbtn_left: play previous/netx file.
