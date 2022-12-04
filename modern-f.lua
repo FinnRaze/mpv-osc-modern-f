@@ -62,7 +62,7 @@ local language = {
         nochapter = 'No chapters.',
     },
     ['chs'] = {
-        welcome = '{\\fs64}拖拽文件或url到此窗口播放',  -- this text appears when mpv starts
+        welcome = '{\\fs48}拖拽文件或url到此窗口播放',  -- this text appears when mpv starts
         off = '关闭',
         na = 'n/a',
         none = '无',
@@ -100,7 +100,7 @@ local osc_styles = {
     Ctrl3 = '{\\blur0\\bord0\\1c&HFFFFFF&\\3c&HFFFFFF&\\fs24\\fnmaterial-design-iconic-font}',
     Time = '{\\blur0\\bord0\\1c&HFFFFFF&\\3c&H000000&\\fs17\\fn' .. user_opts.font .. '}',
     Tooltip = '{\\blur1\\bord0.5\\1c&HFFFFFF&\\3c&H000000&\\fs18\\fn' .. user_opts.font .. '}',
-    Title = '{\\blur1\\bord0.5\\1c&HFFFFFF&\\3c&H0\\fs48\\q2\\fn' .. user_opts.font .. '}',
+    Title = '{\\blur1\\bord0.5\\1c&HFFFFFF&\\3c&H0\\fs36\\q2\\fn' .. user_opts.font .. '}',
     WinCtrl = '{\\blur1\\bord0.5\\1c&HFFFFFF&\\3c&H0\\fs20\\fnmpv-osd-symbols}',
     elementDown = '{\\1c&H999999&}',
 }
@@ -749,7 +749,7 @@ function render_elements(master_ass)
                         tooltiplabel = element.tooltipF
                     end
                     elem_ass:new_event()
-                    elem_ass:pos(tx, ty)
+                    elem_ass:pos(tx-14, ty)
                     elem_ass:an(an)
                     elem_ass:append(element.tooltip_style)
                     elem_ass:append(tooltiplabel)
@@ -1337,7 +1337,7 @@ function osc_init()
     ne = new_element('cy_sub', 'button')
     ne.enabled = (#tracks_osc.sub > 0)
     ne.visible = (osc_param.playresx >= 600)
-    ne.content = '\xEF\x8F\x93'
+    ne.content = '\xEF\x8C\xA4'
     ne.tooltip_style = osc_styles.Tooltip
     ne.tooltipF = function ()
         local msg = texts.off
