@@ -5,7 +5,7 @@ mpv osc script forked from [modern](https://github.com/maoiscat/mpv-osc-modern)
 
 # Installation
 
-modern.lua --> "\~\~/scripts/" (!!REMOVE OTHER OSC SCRIPTS!!)
+osc.lua --> "\~\~/scripts/" (!!REMOVE OTHER OSC SCRIPTS!!)
 
 material-design-iconic-font.ttf --> "\~\~/fonts" ([FONT LINK](https://zavoloklom.github.io/material-design-iconic-font/))
 
