@@ -1,6 +1,5 @@
--- by maoiscat
--- email:valarmor@163.com
--- https://github.com/maoiscat/mpv-osc-morden
+-- Forked from maoiscat'modern by Finn
+-- https://github.com/FinnRaze/mpv-osc-modern-f
 
 local assdraw = require 'mp.assdraw'
 local msg = require 'mp.msg'
