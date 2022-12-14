@@ -1,4 +1,4 @@
--- Forked from maoiscat'modern by Finn
+-- Forked from maoiscat's modern.lua by Finn
 -- https://github.com/FinnRaze/mpv-osc-modern-f
 
 local assdraw = require 'mp.assdraw'
@@ -1394,7 +1394,7 @@ function osc_init()
     ne.eventresponder['mbtn_left_up'] =
         function () mp.commandv('script-binding', 'stats/display-stats-toggle') end
     ne.eventresponder['mbtn_right_up'] =
-        function () mp.commandv('cycle', 'ontop') end
+        function () mp.commandv('script-binding', 'stats/display-page-4') end
     -- title
     ne = new_element('title', 'button')
     ne.content = function ()
