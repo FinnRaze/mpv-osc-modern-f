@@ -865,7 +865,7 @@ function render_message(ass)
 
         local fontsize = tonumber(mp.get_property('options/osd-font-size'))
         local outline = tonumber(mp.get_property('options/osd-border-size'))
-        local maxlines = math.ceil(osc_param.unscaled_y*0.75 / fontsize)
+        local maxlines = math.ceil(osc_param.unscaled_y*1 / fontsize)
         local counterscale = osc_param.playresy / osc_param.unscaled_y
 
         fontsize = fontsize * counterscale / math.max(0.65 + math.min(lines/maxlines, 1), 1)
