@@ -1,15 +1,16 @@
+Fork自modern的mpv osc脚本
 mpv osc script forked from [modern](https://github.com/maoiscat/mpv-osc-modern)
 
-![mpv-shot0007](https://user-images.githubusercontent.com/84557113/205270820-86e17e7f-a679-4b05-b874-d1bf50754d75.jpg)
+![mpv-shot0005](https://user-images.githubusercontent.com/84557113/207482200-361aadcd-56b6-4e7b-ba4d-02ee91db8bfa.jpg)
 
 
-# Installation
+# Installation 安装
 
-osc.lua --> "\~\~/scripts/" (!!REMOVE OTHER OSC SCRIPTS!!)
+osc.lua --> "\~\~/scripts/" (!!REMOVE OTHER OSC SCRIPTS!! 移除其他的osc脚本！！)
 
-material-design-iconic-font.ttf --> "\~\~/fonts" ([FONT LINK](https://zavoloklom.github.io/material-design-iconic-font/))
+material-design-iconic-font.ttf --> "\~\~/fonts" ([FONT LINK](https://zavoloklom.github.io/material-design-iconic-font/)) 复制字体文件
 
-Then edit "\~\~/mpv.conf", add the following lines to the end
+Then edit "\~\~/mpv.conf", add the following lines to the end. 在mpv.conf中加下列代码关闭内置osc
 
 ```
 osc=no
@@ -21,7 +22,7 @@ title=' '
 keepaspect=no
 background=1
 ```
-# Configuration
+# Configuration 设置
 
 Config file locates at "\~\~/script-opts/osc.conf". Supported options are listed below.
 
@@ -70,3 +71,27 @@ Some buttons may accept multiple mouse actions, here is a list:
 ## cycle_audio/subtitle
 * mbtn_left: cycle to next track.
 * mbtn_right: show track list.
+## info
+* mbtn_left: stats/display-stats-toggle.
+* mbtn_right: stats/display-page-4
+
+# 按键行为
+
+一些按键可能具有多种鼠标操作功能，下面列出一些：
+
+## 进度条
+* 鼠标左键: 跳转至点击位置
+* 鼠标右键: 跳转到所在章节开头
+## 快退/快进
+* 鼠标左键: 跳90秒
+* 鼠标右键: 章节数 -1/1.
+* shift+鼠标左键: 帧回退/帧步进
+## 上一个/下一个
+* 鼠标左键: 打开播放列表上一个/下一个文件.
+* 鼠标右键: 显示播放列表.
+## 音频/字幕
+* 鼠标左键: 切换到下一个轨道.
+* 鼠标右键: 显示轨道列表.
+## 信息
+* 鼠标左键: 统计信息开关
+* 鼠标右键: 查看激活的快捷键
