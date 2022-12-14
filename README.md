@@ -1,5 +1,6 @@
-Fork自modern的mpv osc脚本
-mpv osc script forked from [modern](https://github.com/maoiscat/mpv-osc-modern)
+Fork自modern的mpv osc脚本，修改了外观布局、部分按键功能，并带回了mpv内置osc的透明度和可视性调整选项
+
+mpv osc script forked from [modern](https://github.com/maoiscat/mpv-osc-modern).Changed the layout\some buttons' action,and make boxalpha&visibility could be customized just like the builtin OSC
 
 ![mpv-shot0005](https://user-images.githubusercontent.com/84557113/207482200-361aadcd-56b6-4e7b-ba4d-02ee91db8bfa.jpg)
 
@@ -8,7 +9,7 @@ mpv osc script forked from [modern](https://github.com/maoiscat/mpv-osc-modern)
 
 osc.lua --> "\~\~/scripts/" (!!REMOVE OTHER OSC SCRIPTS!! 移除其他的osc脚本！！)
 
-material-design-iconic-font.ttf --> "\~\~/fonts" ([FONT LINK](https://zavoloklom.github.io/material-design-iconic-font/)) 复制字体文件
+material-design-iconic-font.ttf --> "\~\~/fonts" ([FONT LINK](https://zavoloklom.github.io/material-design-iconic-font/)) 复制图标字体文件
 
 Then edit "\~\~/mpv.conf", add the following lines to the end. 在mpv.conf中加下列代码关闭内置osc
 
