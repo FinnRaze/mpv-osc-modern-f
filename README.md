@@ -2,7 +2,8 @@ Fork自modern的mpv osc脚本，修改了外观布局、部分按键功能，并
 
 mpv osc script forked from [modern](https://github.com/maoiscat/mpv-osc-modern).Changed the layout\some buttons' action,and make boxalpha&visibility could be customized just like the builtin OSC
 
-![mpv-shot0005](https://user-images.githubusercontent.com/84557113/207482200-361aadcd-56b6-4e7b-ba4d-02ee91db8bfa.jpg)
+![mpv-shot0019](https://user-images.githubusercontent.com/84557113/208023797-44ea3794-d2e6-4394-8a83-005d6125131d.jpg)
+
 
 
 # Installation 安装
@@ -89,7 +90,7 @@ Some buttons may accept multiple mouse actions, here is a list:
 * shift+鼠标左键: 帧回退/帧步进
 ## 上一个/下一个
 * 鼠标左键: 打开播放列表上一个/下一个文件.
-* 鼠标右键: 显示播放列表.
+* 鼠标右键: 打开playlistmanager播放列表脚本.
 ## 音频/字幕
 * 鼠标左键: 切换到下一个轨道.
 * 鼠标右键: 显示轨道列表.
