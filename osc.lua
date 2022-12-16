@@ -865,7 +865,7 @@ function render_message(ass)
 
         local fontsize = tonumber(mp.get_property('options/osd-font-size'))
         local outline = tonumber(mp.get_property('options/osd-border-size'))
-        local maxlines = math.ceil(osc_param.unscaled_y*1 / fontsize)
+        local maxlines = math.ceil(osc_param.unscaled_y*0.75 / fontsize)
         local counterscale = osc_param.playresy / osc_param.unscaled_y
 
         fontsize = fontsize * counterscale / math.max(0.65 + math.min(lines/maxlines, 1), 1)
@@ -1017,6 +1017,22 @@ function window_controls()
     lo.geometry = second_geo
     lo.style = osc_styles.WinCtrl
     lo.alpha[3] = 0
+    
+    local button_geo={
+        x = controlbox_left+69,
+        y = button_y,
+        an = 5,
+        w = 142,
+        h = wc_geo.h,
+    }
+    
+    -- Background Bar
+    new_element("wcbar", "box")
+    lo = add_layout("wcbar")
+    lo.geometry = button_geo
+    lo.layer = 10
+    lo.style = osc_styles.wcBar
+    lo.alpha[1] = user_opts.boxalpha
 end
 
 --
@@ -1242,7 +1258,7 @@ function osc_init()
             mp.commandv('playlist-prev', 'weak')
         end
     ne.eventresponder['mbtn_right_up'] =
-        function () show_message(get_playlist()) end
+        function () mp.commandv('script-binding', 'playlistmanager/showplaylist') end
 
     --next
     ne = new_element('pl_next', 'button')
@@ -1254,7 +1270,7 @@ function osc_init()
             mp.commandv('playlist-next', 'weak')
         end
     ne.eventresponder['mbtn_right_up'] =
-        function () show_message(get_playlist()) end
+        function () mp.commandv('script-binding', 'playlistmanager/showplaylist') end
 
 
     --play control buttons
