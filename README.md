@@ -24,6 +24,10 @@ title=' '
 keepaspect=no
 background=1
 ```
+
+# thumbnail 略缩图支持
+Install [thumbfast](https://github.com/po5/thumbfast)
+
 # Configuration 设置
 
 Config file locates at "\~\~/script-opts/osc.conf". Supported options are listed below.
