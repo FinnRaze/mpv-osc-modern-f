@@ -102,6 +102,7 @@ local osc_styles = {
     Title = '{\\blur1\\bord0.5\\1c&HFFFFFF&\\3c&H0\\fs36\\q2\\fn' .. user_opts.font .. '}',
     WinCtrl = '{\\blur1\\bord0.5\\1c&HFFFFFF&\\3c&H0\\fs20\\fnmpv-osd-symbols}',
     elementDown = '{\\1c&H999999&}',
+    wcBar = "{\\1c&H000000}",
 }
 
 -- internal states, do not touch
@@ -865,7 +866,7 @@ function render_message(ass)
 
         local fontsize = tonumber(mp.get_property('options/osd-font-size'))
         local outline = tonumber(mp.get_property('options/osd-border-size'))
-        local maxlines = math.ceil(osc_param.unscaled_y*0.75 / fontsize)
+        local maxlines = math.ceil(osc_param.unscaled_y*1 / fontsize)
         local counterscale = osc_param.playresy / osc_param.unscaled_y
 
         fontsize = fontsize * counterscale / math.max(0.65 + math.min(lines/maxlines, 1), 1)
@@ -949,6 +950,7 @@ function window_controls()
         w = osc_param.playresx,
         h = 32,
     }
+    
 
     local controlbox_w = window_control_box_width
     local titlebox_w = wc_geo.w - controlbox_w
@@ -963,7 +965,7 @@ function window_controls()
                                controlbox_w, wc_geo.h))
 
     local lo
-
+        
     local button_y = wc_geo.y - (wc_geo.h / 2)
     local first_geo =
         {x = controlbox_left + 27, y = button_y, an = 5, w = 40, h = wc_geo.h}
