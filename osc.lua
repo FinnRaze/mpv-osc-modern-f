@@ -1382,11 +1382,15 @@ function osc_init()
     ne = new_element('vol_ctrl', 'button')
     ne.enabled = (get_track('audio')>0)
     ne.visible = (osc_param.playresx >= 650) and user_opts.volumecontrol
-    ne.content = function ()
-        if (state.mute) then
-            return ('\xEF\x8E\xBB')
+    ne.content = function()
+        local volume = mp.get_property_number("volume", 0)
+        local mute = mp.get_property_native("mute")
+        local volicon = {'\xEF\x8E\xBA',
+                         '\xEF\x8E\xB9', '\xEF\x8E\xBC'}
+        if volume == 0 or mute then
+            return '\xEF\x8E\xBB'
         else
-            return ('\xEF\x8E\xBC')
+            return volicon[math.min(3,math.ceil(volume / (100/3)))]
         end
     end
     ne.eventresponder['mbtn_left_up'] =
