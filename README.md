@@ -73,7 +73,7 @@ Some buttons may accept multiple mouse actions, here is a list:
 * shift+mbtn_left: frame-step/frame-back-step
 ## playlist_back/forwad
 * mbtn_left: play previous/netx file.
-* mbtn_right: show playlist.
+* mbtn_right: open [playlistmanager](https://github.com/jonniek/mpv-playlistmanager).
 ## cycle_audio/subtitle
 * mbtn_left: cycle to next track.
 * mbtn_right: show track list.
@@ -94,7 +94,7 @@ Some buttons may accept multiple mouse actions, here is a list:
 * shift+鼠标左键: 帧回退/帧步进
 ## 上一个/下一个
 * 鼠标左键: 打开播放列表上一个/下一个文件.
-* 鼠标右键: 打开playlistmanager播放列表脚本.
+* 鼠标右键: 打开[playlistmanager](https://github.com/jonniek/mpv-playlistmanager)播放列表脚本.
 ## 音频/字幕
 * 鼠标左键: 切换到下一个轨道.
 * 鼠标右键: 显示轨道列表.
