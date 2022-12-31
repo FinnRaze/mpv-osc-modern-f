@@ -1,6 +1,6 @@
-Fork自modern的mpv osc脚本，修改了外观布局、部分按键功能，并带回了mpv内置osc的透明度和可视性调整选项
+Fork自modern的mpv osc脚本，修改了外观布局、部分按键功能；加回mpv内置osc的透明度调整选项；加回可用快捷键控制可视性的功能
 
-mpv osc script forked from [modern](https://github.com/maoiscat/mpv-osc-modern).Changed the layout\some buttons' action,and make boxalpha&visibility could be customized just like the builtin OSC
+mpv osc script forked from [modern](https://github.com/maoiscat/mpv-osc-modern).Changed the layout\some buttons' action；make boxalpha could be customized in osc.conf；make osc-visibility could be adjusted with shortcut in input.conf，just like the builtin OSC
 
 ![mpv-shot0019](https://user-images.githubusercontent.com/84557113/208023797-44ea3794-d2e6-4394-8a83-005d6125131d.jpg)
 
@@ -17,12 +17,6 @@ Then edit "\~\~/mpv.conf", add the following lines to the end. 在mpv.conf中加
 ```
 osc=no
 
-[Idle]
-profile-cond=p["idle-active"]
-profile-restore=copy-equal
-title=' '
-keepaspect=no
-background=1
 ```
 
 # thumbnail 略缩图支持
