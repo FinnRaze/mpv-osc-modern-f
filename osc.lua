@@ -39,7 +39,7 @@ local user_opts = {
     windowcontrols = 'auto',    -- whether to show window controls
     volumecontrol = true,       -- whether to show mute button and volumne slider
     processvolume = false,		-- volue slider show processd volume
-    language = 'chs',            -- eng=English, chs=Chinese
+    language = 'eng',            -- eng=English, chs=Chinese
     boxalpha = 180
 }
 
