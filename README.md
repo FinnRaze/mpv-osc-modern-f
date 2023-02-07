@@ -1,8 +1,13 @@
-Fork自modern的mpv osc脚本，修改了外观布局、部分按键功能；加回mpv内置osc的透明度调整选项；加回可用快捷键控制可视性的功能
+此分支调整了按键布局，便于查看字幕轨和音轨；添加了ontop按键
+
+this branch adjusted buttons' layout for easier checking sid&aid; added a button for 'ontop'
+
+
+Fork自modern的mpv osc脚本，修改了外观布局、部分按键功能；加回mpv内置osc的透明度调整选项；加回可用快捷键控制可视性的功能。
 
 mpv osc script forked from [modern](https://github.com/maoiscat/mpv-osc-modern).Changed the layout\some buttons' action；make boxalpha could be customized in osc.conf；make osc-visibility could be adjusted with shortcut in input.conf，just like the builtin OSC
 
-![mpv-shot0019](https://user-images.githubusercontent.com/84557113/208023797-44ea3794-d2e6-4394-8a83-005d6125131d.jpg)
+![mpv-shot0001](https://user-images.githubusercontent.com/84557113/217278486-93970905-2685-4a82-9cf6-031ed41e710b.jpg)
 
 
 
@@ -61,16 +66,14 @@ Some buttons may accept multiple mouse actions, here is a list:
 ## seekbar
 * mbtn_left: seek to chosen position.
 * mbtn_right: seek to the head of chosen chapter
-## skip_back/forward
-* mbtn_left: skip 90 seconds.
-* mbtn_right: add chapter -1/1.
-* shift+mbtn_left: frame-step/frame-back-step
 ## playlist_back/forwad
 * mbtn_left: play previous/netx file.
 * mbtn_right: open [playlistmanager](https://github.com/jonniek/mpv-playlistmanager).
 ## cycle_audio/subtitle
 * mbtn_left: cycle to next track.
 * mbtn_right: show track list.
+## ontop
+* mbtn_left: cycle ontop
 ## info
 * mbtn_left: stats/display-stats-toggle.
 * mbtn_right: stats/display-page-4
@@ -82,16 +85,14 @@ Some buttons may accept multiple mouse actions, here is a list:
 ## 进度条
 * 鼠标左键: 跳转至点击位置
 * 鼠标右键: 跳转到所在章节开头
-## 快退/快进
-* 鼠标左键: 跳90秒
-* 鼠标右键: 章节数 -1/1.
-* shift+鼠标左键: 帧回退/帧步进
 ## 上一个/下一个
 * 鼠标左键: 打开播放列表上一个/下一个文件.
 * 鼠标右键: 打开[playlistmanager](https://github.com/jonniek/mpv-playlistmanager)播放列表脚本.
 ## 音频/字幕
 * 鼠标左键: 切换到下一个轨道.
 * 鼠标右键: 显示轨道列表.
+## 置顶
+* 鼠标左键：切换置顶
 ## 信息
 * 鼠标左键: 统计信息开关
 * 鼠标右键: 查看激活的快捷键
