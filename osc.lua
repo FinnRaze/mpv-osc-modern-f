@@ -40,7 +40,7 @@ local user_opts = {
     windowcontrols = 'auto',    -- whether to show window controls
     volumecontrol = true,       -- whether to show mute button and volumne slider
     processvolume = false,		-- volue slider show processd volume
-    language = 'eng',            -- eng=English, chs=Chinese
+    language = 'chs',            -- eng=English, chs=Chinese
     boxalpha = 180
 }
 
@@ -1112,13 +1112,12 @@ layouts = function ()
     lo = new_element('volumebarbg', 'box')
     lo.visible = (osc_param.playresx >= 750) and user_opts.volumecontrol
     lo = add_layout('volumebarbg')
-    lo.geometry = {x = osc_geo.w - 317, y = refY - 40, an = 4, w = 80, h = 2}
+    lo.geometry = {x = osc_geo.w - 257, y = refY - 40, an = 4, w = 80, h = 2}
     lo.layer = 13
     lo.style = osc_styles.VolumebarBg
-
     
     lo = add_layout('volumebar')
-    lo.geometry = {x = osc_geo.w - 317, y = refY - 40, an = 4, w = 80, h = 8}
+    lo.geometry = {x = osc_geo.w - 257, y = refY - 40, an = 4, w = 80, h = 8}
     lo.style = osc_styles.VolumebarFg
     lo.slider.gap = 3
     lo.slider.tooltip_style = osc_styles.Tooltip
@@ -1128,19 +1127,10 @@ layouts = function ()
     lo = add_layout('pl_prev')
     lo.geometry = {x = refX + 87, y = refY - 40 , an = 5, w = 30, h = 24}
     lo.style = osc_styles.Ctrl2
-
-    lo = add_layout('skipback')
-    lo.geometry = {x = refX + 187, y = refY - 40 , an = 5, w = 30, h = 24}
-    lo.style = osc_styles.Ctrl2
-
             
     lo = add_layout('playpause')
     lo.geometry = {x = refX + 37, y = refY - 40 , an = 5, w = 45, h = 45}
-    lo.style = osc_styles.Ctrl1    
-
-    lo = add_layout('skipfrwd')
-    lo.geometry = {x = refX + 237, y = refY - 40 , an = 5, w = 30, h = 24}
-    lo.style = osc_styles.Ctrl2    
+    lo.style = osc_styles.Ctrl1      
 
     lo = add_layout('pl_next')
     lo.geometry = {x = refX + 137, y = refY - 40 , an = 5, w = 30, h = 24}
@@ -1150,32 +1140,37 @@ layouts = function ()
     -- Time
     lo = add_layout('tc_left')
     lo.geometry = {x = 25, y = refY - 84, an = 7, w = 64, h = 20}
-    lo.style = osc_styles.Time    
-    
+    lo.style = osc_styles.Time       
 
     lo = add_layout('tc_right')
     lo.geometry = {x = osc_geo.w - 25 , y = refY -84, an = 9, w = 64, h = 20}
     lo.style = osc_styles.Time    
 
-    lo = add_layout('cy_audio')
-    lo.geometry = {x = osc_geo.w - 187, y = refY - 40, an = 5, w = 24, h = 24}
+    -- Option
+    lo = add_layout('cy_sub')
+    lo.geometry = {x = refX + 187, y = refY - 40 , an = 5, w = 30, h = 24}
     lo.style = osc_styles.Ctrl3
     lo.visible = (osc_param.playresx >= 540)
     
-    lo = add_layout('cy_sub')
-    lo.geometry = {x = osc_geo.w - 137, y = refY - 40, an = 5, w = 24, h = 24}
+    lo = add_layout('cy_audio')
+    lo.geometry = {x = refX + 237, y = refY - 40 , an = 5, w = 30, h = 24}
     lo.style = osc_styles.Ctrl3
     lo.visible = (osc_param.playresx >= 600)
 
     lo = add_layout('vol_ctrl')
-    lo.geometry = {x = osc_geo.w - 337, y = refY - 40, an = 5, w = 24, h = 24}
+    lo.geometry = {x = osc_geo.w - 277, y = refY - 40, an = 5, w = 24, h = 24}
     lo.style = osc_styles.Ctrl3
     lo.visible = (osc_param.playresx >= 650)
 
     lo = add_layout('tog_fs')
     lo.geometry = {x = osc_geo.w - 37, y = refY - 40, an = 5, w = 24, h = 24}
     lo.style = osc_styles.Ctrl3
-    lo.visible = (osc_param.playresx >= 540)
+    lo.visible = (osc_param.playresx >= 500)
+    
+    lo = add_layout('ontop')
+    lo.geometry = {x = osc_geo.w - 137, y = refY - 40, an = 5, w = 24, h = 24}
+    lo.style = osc_styles.Ctrl3
+    lo.visible = (osc_param.playresx >= 600)
 
     lo = add_layout('tog_info')
     lo.geometry = {x = osc_geo.w - 87, y = refY - 40, an = 5, w = 24, h = 24}
@@ -1327,7 +1322,7 @@ function osc_init()
     --cy_audio
     ne = new_element('cy_audio', 'button')
     ne.enabled = (#tracks_osc.audio > 0)
-    ne.visible = (osc_param.playresx >= 540)
+    ne.visible = (osc_param.playresx >= 600)
     ne.content = '\xEF\x8E\xB7'
     ne.tooltip_style = osc_styles.Tooltip
     ne.tooltipF = function ()
@@ -1355,7 +1350,7 @@ function osc_init()
     --cy_sub
     ne = new_element('cy_sub', 'button')
     ne.enabled = (#tracks_osc.sub > 0)
-    ne.visible = (osc_param.playresx >= 600)
+    ne.visible = (osc_param.playresx >= 540)
     ne.content = '\xEF\x8C\xA4'
     ne.tooltip_style = osc_styles.Tooltip
     ne.tooltipF = function ()
@@ -1407,10 +1402,23 @@ function osc_init()
             return ('\xEF\x85\xAD')
         end
     end
-    ne.visible = (osc_param.playresx >= 540)
+    --ne.visible = (osc_param.playresx >= 540)
     ne.eventresponder['mbtn_left_up'] =
         function () mp.commandv('cycle', 'fullscreen') end
 
+    --tog_fs
+    ne = new_element('ontop', 'button')
+    ne.content = function ()
+        if mp.get_property('ontop') == 'no' then
+            return ('\xEF\x86\x8B')
+        else
+            return ('\xEF\x86\x8C')
+        end
+    end
+    --ne.visible = (osc_param.playresx >= 540)
+    ne.eventresponder['mbtn_left_up'] =
+        function () mp.commandv('cycle', 'ontop') end
+        
     --tog_info
     ne = new_element('tog_info', 'button')
     ne.content = ''
@@ -1418,7 +1426,7 @@ function osc_init()
     ne.eventresponder['mbtn_left_up'] =
         function () mp.commandv('script-binding', 'stats/display-stats-toggle') end
     ne.eventresponder['mbtn_right_up'] =
-        function () mp.commandv('script-binding', 'stats/display-page-4') end
+        function () mp.commandv('cycle', 'ontop') end
     -- title
     ne = new_element('title', 'button')
     ne.content = function ()
@@ -2033,7 +2041,7 @@ function show_logo()
     ass:draw_stop()
     
     ass:new_event()
-    ass:pos(logo_x, logo_y+110)
+    ass:pos(logo_x, logo_y+140)
     ass:an(8)
     ass:append(texts.welcome)
     set_osd(osd_w, osd_h, ass.text)
