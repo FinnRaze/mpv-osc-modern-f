@@ -29,7 +29,7 @@ Install [thumbfast](https://github.com/po5/thumbfast)
 
 # Configuration 设置
 
-Config file locates at "\~\~/script-opts/osc.conf". Supported options are listed below.
+Config file locates at "\~\~/script-opts/modernf.conf". Supported options are listed below.
 
 ```
     showwindowed=yes/no             -- show OSC when windowed?
