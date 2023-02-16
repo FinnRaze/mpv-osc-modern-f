@@ -67,11 +67,12 @@ Some buttons may accept multiple mouse actions, here is a list:
 * mbtn_left: seek to chosen position.
 * mbtn_right: seek to the head of chosen chapter
 ## playlist_back/forwad
-* mbtn_left: play previous/netx file.
+* mbtn_left: play previous/next file.
 * mbtn_right: open [playlistmanager](https://github.com/jonniek/mpv-playlistmanager).
 ## cycle_audio/subtitle
 * mbtn_left: cycle to next track.
-* mbtn_right: show track list.
+* mbtn_right: cycle to prev track.
+* shift+mbtn_left: show track list.
 ## ontop
 * mbtn_left: cycle ontop
 ## info
@@ -90,7 +91,8 @@ Some buttons may accept multiple mouse actions, here is a list:
 * 鼠标右键: 打开[playlistmanager](https://github.com/jonniek/mpv-playlistmanager)播放列表脚本.
 ## 音频/字幕
 * 鼠标左键: 切换到下一个轨道.
-* 鼠标右键: 显示轨道列表.
+* 鼠标右键: 切换到下一个轨道.
+* shift+鼠标左键: 显示轨道列表.
 ## 置顶
 * 鼠标左键：切换置顶
 ## 信息
