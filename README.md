@@ -91,7 +91,7 @@ Some buttons may accept multiple mouse actions, here is a list:
 * 鼠标右键: 打开[playlistmanager](https://github.com/jonniek/mpv-playlistmanager)播放列表脚本.
 ## 音频/字幕
 * 鼠标左键: 切换到下一个轨道.
-* 鼠标右键: 切换到下一个轨道.
+* 鼠标右键: 切换到上一个轨道.
 * shift+鼠标左键: 显示轨道列表.
 ## 置顶
 * 鼠标左键：切换置顶
