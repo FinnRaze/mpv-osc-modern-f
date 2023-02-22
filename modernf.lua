@@ -11,7 +11,7 @@ local utils = require 'mp.utils'
 --
 -- default user option values
 -- may change them in modernf.conf
--- cycle visibility via input.conf: script-binding modernf/visibility 
+-- cycle visibility via input.conf: script-binding modernf/visibility
 local user_opts = {
     showwindowed = true,        -- show OSC when windowed?
     showfullscreen = true,      -- show OSC when fullscreen?
@@ -34,7 +34,7 @@ local user_opts = {
     seekbarkeyframes = true,    -- use keyframes when dragging the seekbar
     title = '${media-title}',   -- string compatible with property-expansion
                                 -- to be shown as OSC title
-    showtitle = true,            -- show title and no hide timeout on pause
+    showonpause = true,            -- show title and no hide timeout on pause
     timetotal = false,              -- display total time instead of remaining time?
     timems = false,             -- display timecodes with milliseconds
     visibility = 'auto',        -- only used at init to set visibility_mode(...)
@@ -139,7 +139,7 @@ local state = {
     maximized = false,
     osd = mp.create_osd_overlay('ass-events'),
     mute = false,
-    lastvisibility = user_opts.visibility,		-- save last visibility on pause if showtitle
+    lastvisibility = user_opts.visibility,		-- save last visibility on pause if showonpause
     sys_volume,									--system volume
     proc_volume,								--processed volume
 }
@@ -1439,7 +1439,7 @@ function osc_init()
         end
         return not (title == '') and title or ' '
     end
-    ne.visible = osc_param.playresy >= 320 and user_opts.showtitle
+    ne.visible = osc_param.playresx >= 700 --and user_opts.showonpause
     
     --seekbar
     ne = new_element('seekbar', 'slider')
@@ -1705,7 +1705,7 @@ end
 
 function pause_state(name, enabled)
     state.paused = enabled
-    if user_opts.showtitle then
+    if user_opts.showonpause and user_opts.visibility~='never' then
         if enabled then
             state.lastvisibility = user_opts.visibility
             visibility_mode('always', true)
