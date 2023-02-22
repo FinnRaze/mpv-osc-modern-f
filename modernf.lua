@@ -1407,7 +1407,7 @@ function osc_init()
     ne.eventresponder['mbtn_left_up'] =
         function () mp.commandv('cycle', 'fullscreen') end
 
-    --tog_fs
+    --tog_ontop
     ne = new_element('ontop', 'button')
     ne.content = function ()
         if mp.get_property('ontop') == 'no' then
