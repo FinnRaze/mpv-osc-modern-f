@@ -47,7 +47,7 @@ Config file locates at "\~\~/script-opts/modernf.conf". Supported options are li
     seekrangealpha=128              -- transparency of seekranges
     seekbarkeyframes=yes/no         -- use keyframes when dragging the seekbar
     title='${media-title}'          -- string compatible with property-expansion to be shown as OSC title
-    showtitle=yes/no                -- show title and no hide timeout on pause
+    showonpause=yes/no              -- show osc and no hide timeout on pause
     timetotal=yes/no                -- display total time instead of remaining time?
     visibility=auto/always/never    -- set visibility_mode(...)
     windowcontrols=auto/yes/no      -- whether to show window controls
