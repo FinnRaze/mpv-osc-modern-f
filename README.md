@@ -49,7 +49,7 @@ Config file locates at "\~\~/script-opts/modernf.conf". Supported options are li
     title='${media-title}'          -- string compatible with property-expansion to be shown as OSC title
     showtitle=yes/no                -- show title and no hide timeout on pause
     timetotal=yes/no                -- display total time instead of remaining time?
-    visibility=auto/yes/no          -- only used at init to set visibility_mode(...)
+    visibility=auto/always/never    -- set visibility_mode(...)
     windowcontrols=auto/yes/no      -- whether to show window controls
     volumecontrol=yes/no            -- whether to show mute button and volumne slider
     processvolume=yes/no            -- volume bar show processd volume
