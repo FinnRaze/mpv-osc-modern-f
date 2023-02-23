@@ -1346,6 +1346,8 @@ function osc_init()
     ne.eventresponder['mbtn_left_up'] =
         function () set_track('audio', 1) end
     ne.eventresponder['mbtn_right_up'] =
+	function () set_track('audio', -1) end    
+    ne.eventresponder['shift+mbtn_left_down'] =
         function () show_message(get_tracklist('audio')) end
                 
     --cy_sub
@@ -1374,6 +1376,8 @@ function osc_init()
     ne.eventresponder['mbtn_left_up'] =
         function () set_track('sub', 1) end
     ne.eventresponder['mbtn_right_up'] =
+	function () set_track('sub', -1) end
+    ne.eventresponder['shift+mbtn_left_down'] =
         function () show_message(get_tracklist('sub')) end
         
     -- vol_ctrl
