@@ -1,11 +1,21 @@
-此分支调整了按键布局，便于查看字幕轨和音轨；添加了ontop按键
+change log
 
-this branch adjusted buttons' layout for easier checking sid&aid; added a button for 'ontop'
+1.now can change layouts like the builtin osc,see in modernf.conf
 
+
+--------------------------------------
 
 Fork自modern的mpv osc脚本，修改了外观布局、部分按键功能；加回mpv内置osc的透明度调整选项；加回可用快捷键控制可视性的功能。
 
 mpv osc script forked from [modern](https://github.com/maoiscat/mpv-osc-modern).Changed the layout\some buttons' action；make boxalpha could be customized in osc.conf；make osc-visibility could be adjusted with shortcut in input.conf，just like the builtin OSC
+
+original layout
+
+![mpv-shot0019](https://user-images.githubusercontent.com/84557113/223082208-2ea73e6e-e0e4-43a1-b09b-485836c20484.jpg)
+
+
+reduced layout调整了按键布局，便于查看字幕轨和音轨；添加了ontop按键
+this layout adjusted buttons' layout for easier checking sid&aid; added a button for 'ontop'
 
 ![mpv-shot0001](https://user-images.githubusercontent.com/84557113/217278486-93970905-2685-4a82-9cf6-031ed41e710b.jpg)
 
@@ -21,7 +31,6 @@ Then edit "\~\~/mpv.conf", add the following lines to the end. 在mpv.conf中加
 
 ```
 osc=no
-
 ```
 
 # thumbnail 略缩图支持
@@ -32,13 +41,14 @@ Install [thumbfast](https://github.com/po5/thumbfast)
 Config file locates at "\~\~/script-opts/modernf.conf". Supported options are listed below.
 
 ```
+    layout = "reduced",	            -- original/reduced
     showwindowed=yes/no             -- show OSC when windowed?
     showfullscreen=yes/no           -- show OSC when fullscreen?
     scalewindowed=1                 -- scaling of the controller when windowed
     scalefullscreen=1               -- scaling of the controller when fullscreen
     scaleforcedwindow=2             -- scaling when rendered on a forced window
     vidscale=yes/no                 -- scale the controller with the video?
-    hidetimeout=500                -- duration in ms until the OSC hides if no mouse movement. enforced non-negative for the user but internally negative is 'always-on'.
+    hidetimeout=500                 -- duration in ms until the OSC hides if no mouse movement. enforced non-negative for the user but internally negative is 'always-on'.
     fadeduration=200                -- duration of fade out in ms 0=no fade
     minmousemove=3                  -- minimum amount of pixels the mouse has to move between ticks to make the OSC show up
     iamaprogrammer=yes/no           -- use native mpv values and disable OSC internal track list management (and some functions that depend on it)
@@ -49,6 +59,7 @@ Config file locates at "\~\~/script-opts/modernf.conf". Supported options are li
     title='${media-title}'          -- string compatible with property-expansion to be shown as OSC title
     showonpause=yes/no              -- show osc and no hide timeout on pause
     timetotal=yes/no                -- display total time instead of remaining time?
+    timems = false,                 -- display timecodes with milliseconds
     visibility=auto/always/never    -- set visibility_mode(...)
     windowcontrols=auto/yes/no      -- whether to show window controls
     volumecontrol=yes/no            -- whether to show mute button and volumne slider
