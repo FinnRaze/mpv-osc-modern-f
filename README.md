@@ -1,6 +1,7 @@
 change log
 
 1.now can change layouts like the builtin osc,see in modernf.conf
+2.add layout "mid"
 
 
 --------------------------------------
@@ -27,7 +28,7 @@ osc.lua --> "\~\~/scripts/" (!!REMOVE OTHER OSC SCRIPTS!! 移除其他的osc脚�
 
 material-design-iconic-font.ttf --> "\~\~/fonts" ([FONT LINK](https://zavoloklom.github.io/material-design-iconic-font/)) 复制图标字体文件
 
-Then edit "\~\~/mpv.conf", add the following lines to the end. 在mpv.conf中加下列代码关闭内置osc
+Then edit "\~\~/mpv.conf", add the following line to the end. 在mpv.conf中加下列代码关闭内置osc
 
 ```
 osc=no
@@ -41,7 +42,7 @@ Install [thumbfast](https://github.com/po5/thumbfast)
 Config file locates at "\~\~/script-opts/modernf.conf". Supported options are listed below.
 
 ```
-    layout = "reduced",	            -- original/reduced
+    layout = "reduced",	            -- original/reduced/mid
     showwindowed=yes/no             -- show OSC when windowed?
     showfullscreen=yes/no           -- show OSC when fullscreen?
     scalewindowed=1                 -- scaling of the controller when windowed
