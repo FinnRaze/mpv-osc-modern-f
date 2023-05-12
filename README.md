@@ -1,14 +1,15 @@
-change log
+# Feature
 
-1.now can change layouts like the builtin osc,see in modernf.conf
-2.add layout "mid"
-
-
---------------------------------------
-
-Fork自modern的mpv osc脚本，修改了外观布局、部分按键功能；加回mpv内置osc的透明度调整选项；加回可用快捷键控制可视性的功能。
+Fork自modern的mpv osc脚本，做出了以下修改：
+1. 修改外观布局、部分按键功能；
+2. 增加类似mpv内置osc的透明度调整选项（boxalpha）；
+3. 加回可用快捷键控制可视性的功能（script-binding modernf/visibility）；
+4. 多布局切换，可用3种布局（reduced/original/mid）;
+5. 细节微调
 
 mpv osc script forked from [modern](https://github.com/maoiscat/mpv-osc-modern).Changed the layout\some buttons' action；make boxalpha could be customized in osc.conf；make osc-visibility could be adjusted with shortcut in input.conf，just like the builtin OSC
+
+------------------------------------
 
 original layout
 
