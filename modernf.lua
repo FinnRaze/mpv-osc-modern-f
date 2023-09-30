@@ -651,7 +651,7 @@ function render_elements(master_ass)
                             elseif (sliderpos > (s_max - 3)) then
                                 an = an + 1
                             end
-                        elseif (sliderpos > (s_max-s_min)/2) then
+                        elseif (sliderpos > (s_max+s_min)/2) then
                             an = an + 1
                             tx = tx - 5
                         else
@@ -1645,7 +1645,11 @@ function osc_init()
         function () set_track('audio', -1) end    
     ne.eventresponder['shift+mbtn_left_down'] =
         function () show_message(get_tracklist('audio')) end
-                
+    ne.eventresponder["wheel_down_press"] =
+        function () set_track("audio", 1) end
+    ne.eventresponder["wheel_up_press"] =
+        function () set_track("audio", -1) end
+	
     --cy_sub
     ne = new_element('cy_sub', 'button')
     ne.enabled = (#tracks_osc.sub > 0)
@@ -1675,7 +1679,11 @@ function osc_init()
         function () set_track('sub', -1) end
     ne.eventresponder['shift+mbtn_left_down'] =
         function () show_message(get_tracklist('sub')) end
-        
+    ne.eventresponder["wheel_down_press"] =
+        function () set_track("sub", 1) end
+    ne.eventresponder["wheel_up_press"] =
+        function () set_track("sub", -1) end
+	
     -- vol_ctrl
     ne = new_element('vol_ctrl', 'button')
     ne.enabled = (get_track('audio')>0)
@@ -1857,7 +1865,11 @@ function osc_init()
         end
     ne.eventresponder['reset'] =
         function (element) element.state.lastseek = nil end
-
+    ne.eventresponder["wheel_up_press"] =
+        function () mp.commandv("osd-auto", "seek",  10) end
+    ne.eventresponder["wheel_down_press"] =
+        function () mp.commandv("osd-auto", "seek", -10) end
+	
     --volumebar
     ne = new_element('volumebar', 'slider')
     ne.visible = (osc_param.playresx >= 700) and user_opts.volumecontrol
