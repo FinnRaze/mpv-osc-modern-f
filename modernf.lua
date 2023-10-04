@@ -43,7 +43,8 @@ local user_opts = {
     volumecontrol = true,       -- whether to show mute button and volumne slider
     processvolume = false,		-- volue slider show processd volume
     language = 'eng',            -- eng=English, chs=Chinese
-    boxalpha = 180
+    boxalpha = 180,
+    deadzone = 200              -- area of mouse movement for osc showhide,pixel from bottom to top
 }
 
 -- Localization
@@ -1065,8 +1066,8 @@ layouts["reduced"] = function ()
     add_area('input', get_hitbox_coords(posX, posY, 1, osc_geo.w, 104))
 
     -- area for show/hide
-    add_area('showhide', 0, osc_param.playresy-200, osc_param.playresx, osc_param.playresy)
-    add_area('showhide_wc', osc_param.playresx*0.67, 0, osc_param.playresx, 48)
+    add_area('showhide', 0, osc_param.playresy-user_opts.deadzone, osc_param.playresx, osc_param.playresy)
+    add_area('showhide_wc', osc_param.playresx*0.5, 0, osc_param.playresx, 48)
     
     -- fetch values
     local osc_w, osc_h=
@@ -1205,8 +1206,8 @@ layouts["original"] = function ()
     add_area('input', get_hitbox_coords(posX, posY, 1, osc_geo.w, 104))
 
     -- area for show/hide
-    add_area('showhide', 0, osc_param.playresy-200, osc_param.playresx, osc_param.playresy)
-    add_area('showhide_wc', osc_param.playresx*0.67, 0, osc_param.playresx, 48)
+    add_area('showhide', 0, osc_param.playresy-user_opts.deadzone, osc_param.playresx, osc_param.playresy)
+    add_area('showhide_wc', osc_param.playresx*0.5, 0, osc_param.playresx, 48)
     
     -- fetch values
     local osc_w, osc_h=
@@ -1373,8 +1374,8 @@ layouts["mid"] = function ()
     add_area('input', get_hitbox_coords(posX, posY, 1, osc_geo.w, 104))
 
     -- area for show/hide
-    add_area('showhide', 0, osc_param.playresy-200, osc_param.playresx, osc_param.playresy)
-    add_area('showhide_wc', osc_param.playresx*0.67, 0, osc_param.playresx, 48)
+    add_area('showhide', 0, osc_param.playresy-user_opts.deadzone, osc_param.playresx, osc_param.playresy)
+    add_area('showhide_wc', osc_param.playresx*0.5, 0, osc_param.playresx, 48)
     
     -- fetch values
     local osc_w, osc_h=
