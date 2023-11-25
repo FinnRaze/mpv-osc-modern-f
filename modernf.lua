@@ -2457,6 +2457,7 @@ mp.observe_property('fullscreen', 'bool',
 mp.observe_property('mute', 'bool',
     function(name, val)
         state.mute = val
+	request_tick()
     end
 )
 mp.observe_property('volume', 'number',
@@ -2467,6 +2468,7 @@ mp.observe_property('volume', 'number',
 		else
 			state.proc_volume = val
 		end
+		request_tick()
 	end
 )
 mp.observe_property('border', 'bool',
@@ -2487,6 +2489,7 @@ mp.observe_property('idle-active', 'bool',
         request_tick()
     end
 )
+mp.observe_property('ontop', nil, request_tick)
 mp.observe_property('pause', 'bool', pause_state)
 mp.observe_property('demuxer-cache-state', 'native', cache_state)
 mp.observe_property('vo-configured', 'bool', function(name, val)
@@ -2546,8 +2549,6 @@ function always_on(val)
     if state.enabled then
         if val then
             show_osc()
-        else
-            hide_osc()
         end
     end
 end
