@@ -1067,7 +1067,9 @@ layouts["reduced"] = function ()
 
     -- area for show/hide
     add_area('showhide', 0, osc_param.playresy-user_opts.deadzone, osc_param.playresx, osc_param.playresy)
+    if window_controls_enabled() then
     add_area('showhide_wc', osc_param.playresx*0.5, 0, osc_param.playresx, 48)
+    end
     
     -- fetch values
     local osc_w, osc_h=
@@ -1207,7 +1209,9 @@ layouts["original"] = function ()
 
     -- area for show/hide
     add_area('showhide', 0, osc_param.playresy-user_opts.deadzone, osc_param.playresx, osc_param.playresy)
+    if window_controls_enabled() then
     add_area('showhide_wc', osc_param.playresx*0.5, 0, osc_param.playresx, 48)
+    end
     
     -- fetch values
     local osc_w, osc_h=
@@ -1375,7 +1379,9 @@ layouts["mid"] = function ()
 
     -- area for show/hide
     add_area('showhide', 0, osc_param.playresy-user_opts.deadzone, osc_param.playresx, osc_param.playresy)
+    if window_controls_enabled() then
     add_area('showhide_wc', osc_param.playresx*0.5, 0, osc_param.playresx, 48)
+    end
     
     -- fetch values
     local osc_w, osc_h=
