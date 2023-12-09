@@ -35,6 +35,7 @@ local user_opts = {
     seekbarkeyframes = true,    -- use keyframes when dragging the seekbar
     title = '${media-title}',   -- string compatible with property-expansion
                                 -- to be shown as OSC title
+    idlescreen = true,          -- show mpv logo on idle
     showonpause = true,            -- show title and no hide timeout on pause
     timetotal = false,              -- display total time instead of remaining time?
     timems = false,             -- display timecodes with milliseconds
@@ -2379,7 +2380,7 @@ end
 function tick()
     if (not state.enabled) then return end
 
-    if (state.idle) then
+    if (state.idle) and user_opts.idlescreen then
         show_logo()
         -- render idle message
         msg.trace('idle message')
