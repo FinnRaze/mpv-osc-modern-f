@@ -5,7 +5,7 @@ Fork自modern的mpv osc脚本，做出了以下修改：
 2. 增加类似mpv内置osc的透明度调整选项（boxalpha）；
 3. 加回可用快捷键控制可视性的功能（script-binding modernf/visibility）；
 4. 多布局切换，可用3种布局（reduced/original/mid）;
-5. 细节微调
+5. 更多细节微调
 
 mpv osc script forked from [modern](https://github.com/maoiscat/mpv-osc-modern).Changed the layout\some buttons' action；make boxalpha could be customized in osc.conf；make osc-visibility could be adjusted with shortcut in input.conf，just like the builtin OSC
 
@@ -43,7 +43,14 @@ Install [thumbfast](https://github.com/po5/thumbfast)
 Config file locates at "\~\~/script-opts/modernf.conf". Supported options are listed below.
 
 ```
-    layout = "reduced",	            -- original/reduced/mid
+    layout = "reduced"	            -- original/reduced/mid
+    showonpause=yes/no              -- show osc and no hide timeout on pause
+    timetotal=yes/no                -- display total time instead of remaining time?
+    timems = false                  -- display timecodes with milliseconds
+    visibility=auto/always/never    -- set visibility_mode(...)
+    boxalpha=80                     -- alpha of the background box,0 (opaque) to 255 (fully transparent)
+    idlescreen = yes/no             -- show logo and welcome when idle
+    deadzone = 200                  -- area of mouse movement for osc showhide,pixel from bottom to top 
     showwindowed=yes/no             -- show OSC when windowed?
     showfullscreen=yes/no           -- show OSC when fullscreen?
     scalewindowed=1                 -- scaling of the controller when windowed
@@ -59,15 +66,11 @@ Config file locates at "\~\~/script-opts/modernf.conf". Supported options are li
     seekrangealpha=128              -- transparency of seekranges
     seekbarkeyframes=yes/no         -- use keyframes when dragging the seekbar
     title='${media-title}'          -- string compatible with property-expansion to be shown as OSC title
-    showonpause=yes/no              -- show osc and no hide timeout on pause
-    timetotal=yes/no                -- display total time instead of remaining time?
-    timems = false,                 -- display timecodes with milliseconds
-    visibility=auto/always/never    -- set visibility_mode(...)
     windowcontrols=auto/yes/no      -- whether to show window controls
     volumecontrol=yes/no            -- whether to show mute button and volumne slider
     processvolume=yes/no            -- volume bar show processd volume
     language=eng/chs                -- eng=English chs=Chinese
-    boxalpha=80                     -- alpha of the background box,0 (opaque) to 255 (fully transparent)
+
 ```
 
 # Button Actions
