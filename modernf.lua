@@ -2328,10 +2328,13 @@ end
 
 function show_logo()
     local osd_w, osd_h, osd_aspect = mp.get_osd_size()
+	
     osd_w, osd_h = 1024*osd_aspect, 1024
     local logo_x, logo_y = osd_w/2, osd_h/2-20
     local ass = assdraw.ass_new()
-    
+     if osd_aspect == 0 then
+            return
+        end
     ass:new_event()
     ass:pos(logo_x, logo_y)
     ass:append('{\\1c&HE5E5E5&\\3c&H0&\\3a&H60&\\blur1\\bord0.5}')
