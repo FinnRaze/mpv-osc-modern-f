@@ -2591,7 +2591,7 @@ function visibility_mode(mode, no_osd)
     end
     
     user_opts.visibility = mode
-    mp.set_property_native("osc-visibility", mode)
+    mp.set_property_native("user-data/osc-visibility", mode)
     
     if not no_osd and tonumber(mp.get_property('osd-level')) >= 1 then
         mp.osd_message('OSC visibility: ' .. mode)
@@ -2621,7 +2621,7 @@ function idlescreen_visibility(mode, no_osd)
         user_opts.idlescreen = false
     end
 
-    mp.set_property_native("osc-idlescreen", mode)
+    mp.set_property_native("user-data/osc-idlescreen", mode)
 
     if not no_osd and tonumber(mp.get_property("osd-level")) >= 1 then
         mp.osd_message("OSC logo visibility: " .. tostring(mode))
